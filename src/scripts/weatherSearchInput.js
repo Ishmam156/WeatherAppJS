@@ -1,4 +1,7 @@
-import { getWeatherDataOfLocation } from "./getWeatherData";
+import {
+  getWeatherDataOfLocation,
+  getWeatherOfCoordinates,
+} from "./getWeatherData";
 import { capitalize, showErrorMessage } from "./helper";
 import { displayWeatherToDOM } from "./addWeatherToDOM";
 
@@ -62,7 +65,6 @@ const degreeChange = async (element) => {
   const currentDegree = element.textContent[1];
   const locationToSearch =
     document.getElementById("weatherLocation").textContent;
-  console.log(locationToSearch);
   const weatherData = await getWeatherDataOfLocation(
     locationToSearch,
     currentDegree === "C" ? "imperial" : "metric"
@@ -81,4 +83,14 @@ const addLocationSearchListener = () => {
     .addEventListener("click", (event) => locationInput(event.target));
 };
 
-export { addLocationSearchListener };
+// If user provides lat and long from browser, display weather data on DOM
+const geoLocationInput = async (lat, long) => {
+  const weatherData = await getWeatherOfCoordinates(lat, long);
+  displayWeatherToDOM(weatherData);
+  // Display location name from API call
+  const nameElement = document.getElementById("weatherLocation");
+  nameElement.innerHTML = "";
+  nameElement.textContent = capitalize(weatherData.name);
+};
+
+export { addLocationSearchListener, locationInput, geoLocationInput };

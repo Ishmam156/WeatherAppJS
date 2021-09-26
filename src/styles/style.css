@@ -129,7 +129,7 @@ body[light-mode="dark"] #mainContainer p {
   font-style: italic;
   font-size: small;
   word-wrap: break-word;
-  max-width: 390px;
+  max-width: 450px;
 }
 
 /* Header of Weather Widget */
