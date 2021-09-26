@@ -4,7 +4,7 @@
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
-  --widgetAccent: #c9981d;
+  --widgetAccent: #d4ac45;
   --widgetDarkAccent: #fbbf24;
   --widgetBackground: #423f37;
   --widgetDarkBackground: #efedea;
@@ -206,4 +206,25 @@ body[light-mode="dark"] #additionalDisplay img {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#weatherLocation form {
+  display: inline;
+}
+
+#weatherLocation input[type="text"] {
+  width: 9rem;
+  border: none;
+  border-radius: 5px;
+  margin-right: 5px;
+  height: 1.25rem;
+  text-indent: 2px;
+}
+
+#weatherLocation input[type="submit"] {
+  border: none;
+  height: 1.25rem;
+  border-radius: 5px;
+  background-color: #503c0b;
+  color: var(--colorBackground);
 }

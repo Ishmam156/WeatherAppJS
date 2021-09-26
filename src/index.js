@@ -5,31 +5,37 @@ import { addColorMode } from "./scripts/colorMode";
 
 addColorMode();
 
-// const bodyElement = document.querySelector("body");
+function capitalize([first, ...rest]) {
+  return first.toUpperCase() + rest.join("").toLowerCase();
+}
 
-// if (localStorage.lightMode == "dark") {
-//   bodyElement.setAttribute("light-mode", "dark");
-//   showIcon();
-// }
+const locationInput = (element) => {
+  if (element.nodeName === "SPAN") {
+    const initialLocation = element.textContent;
+    element.textContent = "";
 
-// function showIcon() {
-//   const colorIcons = document.querySelectorAll(".darkModeIcon");
-//   colorIcons.forEach((icon) => icon.classList.toggle("active"));
-// }
+    const searchForm = document.createElement("form");
+    const newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.value = initialLocation;
+    searchForm.append(newInput);
+    const submitButton = document.createElement("input");
+    submitButton.type = "submit";
+    submitButton.value = "Go";
+    searchForm.append(submitButton);
+    element.append(searchForm);
+    newInput.focus();
 
-// function toggle_light_mode() {
-//   var bodyElement = document.querySelector("body");
-//   if (localStorage.lightMode == "dark") {
-//     localStorage.lightMode = "light";
-//     bodyElement.setAttribute("light-mode", "light");
-//   } else {
-//     localStorage.lightMode = "dark";
-//     bodyElement.setAttribute("light-mode", "dark");
-//   }
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      console.log(newInput.value);
+      const nameElement = document.getElementById("weatherLocation");
+      nameElement.innerHTML = "";
+      nameElement.textContent = capitalize(newInput.value);
+    });
+  }
+};
 
-//   showIcon();
-// }
-
-// document
-//   .getElementById("toggleColorMode")
-//   .addEventListener("click", () => toggle_light_mode());
+document
+  .getElementById("weatherLocation")
+  .addEventListener("click", (event) => locationInput(event.target));
