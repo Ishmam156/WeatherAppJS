@@ -4,12 +4,15 @@
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
+  --widgetAccent: #c9981d;
+  --widgetDarkAccent: #fbbf24;
+  --widgetBackground: #423f37;
+  --widgetDarkBackground: #efedea;
 }
 
 .light-mode-button {
   background: 0;
   border: 0;
-  box-sizing: border-box;
   cursor: pointer;
   width: 30px;
   height: 16px;
@@ -55,17 +58,20 @@
 body {
   background-color: var(--colorBackground);
   transition: background-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
+  font-family: Helvetica, sans-serif;
 }
 
 body[light-mode="dark"] {
   background-color: var(--colorDarkBackground);
-  color: #ced4e2;
 }
 
 body[light-mode="dark"] .light-mode-button span:nth-child(1) {
   background-color: #ced4e2;
-  color: #141516;
 }
 
 body[light-mode="dark"] .light-mode-button span:nth-child(2) {
@@ -83,4 +89,71 @@ body[light-mode="dark"] .light-mode-button span:nth-child(2) {
 
 .active {
   display: block;
+}
+
+#locationHeader {
+  height: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: bold;
+  background-color: var(--widgetAccent);
+  transition: background-color 0.3s;
+  color: var(--widgetBackground);
+}
+
+body[light-mode="dark"] #locationHeader {
+  color: black;
+  background-color: var(--widgetDarkAccent);
+}
+
+#weatherDisplay {
+  height: 7rem;
+  padding: 0.5rem;
+  color: var(--widgetDarkBackground);
+  background-color: var(--widgetBackground);
+  transition: background-color 0.3s;
+}
+
+body[light-mode="dark"] #weatherDisplay {
+  color: var(--colorDarkBackground);
+  background-color: var(--widgetDarkBackground);
+}
+
+#additionalDisplay {
+  height: 2rem;
+  padding: 0.5rem;
+  text-align: center;
+  font-size: small;
+  background-color: var(--widgetAccent);
+  transition: background-color 0.3s;
+  color: var(--widgetBackground);
+}
+
+body[light-mode="dark"] #additionalDisplay {
+  color: black;
+  background-color: var(--widgetDarkAccent);
+}
+
+#mainContainer h1 {
+  color: var(--colorDarkBackground);
+  text-align: center;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+body[light-mode="dark"] #mainContainer h1,
+body[light-mode="dark"] #mainContainer p {
+  color: var(--widgetDarkBackground);
+}
+
+#mainContainer {
+  margin: 0rem 1rem;
+}
+
+#mainContainer p {
+  color: var(--colorDarkBackground);
+  margin: 1.5rem 1rem;
+  text-align: center;
+  font-style: italic;
+  font-size: small;
 }
