@@ -28,7 +28,21 @@ const locationInput = (element) => {
 
     searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      console.log(newInput.value);
+      const searchValue = newInput.value.trim();
+      if (!searchValue) {
+        const errorElement = document.getElementById("error");
+        errorElement.textContent = "You need to enter a location!";
+        errorElement.style.display = "block";
+
+        setTimeout(() => {
+          errorElement.innerHTML = "";
+          newInput.value = "";
+          errorElement.style.display = "none";
+        }, 2000);
+
+        return;
+      }
+
       const nameElement = document.getElementById("weatherLocation");
       nameElement.innerHTML = "";
       nameElement.textContent = capitalize(newInput.value);

@@ -212,6 +212,10 @@ body[light-mode="dark"] #additionalDisplay img {
   display: inline;
 }
 
+#weatherLocation {
+  cursor: pointer;
+}
+
 #weatherLocation input[type="text"] {
   width: 9rem;
   border: none;
@@ -219,6 +223,11 @@ body[light-mode="dark"] #additionalDisplay img {
   margin-right: 5px;
   height: 1.25rem;
   text-indent: 2px;
+  cursor: pointer;
+}
+
+#weatherLocation input[type="text"]:focus {
+  outline-color: #1fadd5;
 }
 
 #weatherLocation input[type="submit"] {
@@ -227,4 +236,10 @@ body[light-mode="dark"] #additionalDisplay img {
   border-radius: 5px;
   background-color: #503c0b;
   color: var(--colorBackground);
+  cursor: pointer;
+}
+
+#mainContainer #error {
+  display: none;
+  color: red;
 }
