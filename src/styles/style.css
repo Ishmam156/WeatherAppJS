@@ -6,7 +6,7 @@
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
-  --widgetAccent: #d4ac45;
+  --widgetAccent: #e4bd5c;
   --widgetDarkAccent: #fbbf24;
   --widgetBackground: #423f37;
   --widgetDarkBackground: white;
@@ -141,7 +141,7 @@ body[light-mode="dark"] #mainContainer p {
 
 body[light-mode="dark"] #locationHeader {
   color: black;
-  background-color: var(--widgetAccent);
+  background-color: var(--widgetDarkAccent);
 }
 
 /* Main display of Weather Widget */
@@ -171,11 +171,11 @@ body[light-mode="dark"] #weatherDisplay {
 }
 
 #tempSign {
-  border-bottom: 5px solid var(--widgetAccent);
+  border-bottom: 3px solid var(--widgetAccent);
 }
 
 body[light-mode="dark"] #tempSign {
-  border-bottom: 5px solid var(--widgetDarkAccent);
+  border-bottom: 3px solid var(--widgetDarkAccent);
 }
 
 /* Temperature description display text in weather widget */

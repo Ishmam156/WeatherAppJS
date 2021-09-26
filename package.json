@@ -39,7 +39,6 @@
     "webpack-dev-server": "^4.2.0"
   },
   "dependencies": {
-    "axios": "^0.21.4",
-    "colorthief": "^2.3.2"
+    "axios": "^0.21.4"
   }
 }

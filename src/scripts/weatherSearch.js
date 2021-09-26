@@ -1,7 +1,6 @@
-// Helper function to capitalize user input
-const capitalize = ([firstLetter, ...restOfWord]) => {
-  return firstLetter.toUpperCase() + restOfWord.join("").toLowerCase();
-};
+import { getWeatherDataOfLocation } from "./getDataAPI";
+import { capitalize, showErrorMessage } from "./helper";
+import { displayWeatherToDOM } from "./addWeatherToDOM";
 
 const locationInput = (element) => {
   // Check if target element is the inital HTML span element
@@ -27,29 +26,35 @@ const locationInput = (element) => {
     newInput.focus();
 
     // Check for newly added search form submission
-    searchForm.addEventListener("submit", (event) => {
+    searchForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       // Check if empty string or not
       const searchValue = newInput.value.trim();
       if (!searchValue) {
         // Show appropiate error for certain time
-        const errorElement = document.getElementById("error");
-        errorElement.textContent = "You need to enter a location!";
-        errorElement.style.display = "block";
+        showErrorMessage("You need to enter a location!", newInput, 2000);
 
-        setTimeout(() => {
-          errorElement.innerHTML = "";
-          newInput.value = "";
-          errorElement.style.display = "none";
-        }, 2000);
+        return;
+      }
 
+      const weatherData = await getWeatherDataOfLocation(searchValue);
+
+      if (weatherData) {
+        console.log("test");
+        displayWeatherToDOM(weatherData);
+      } else {
+        showErrorMessage(
+          "Couldn't find weather data for your location",
+          newInput,
+          3000
+        );
         return;
       }
 
       // Remove search form and set location as searched word
       const nameElement = document.getElementById("weatherLocation");
       nameElement.innerHTML = "";
-      nameElement.textContent = capitalize(newInput.value);
+      nameElement.textContent = capitalize(searchValue);
     });
   }
 };
