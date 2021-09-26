@@ -1,64 +1,10 @@
 :root {
-  --colorBackground: white;
+  --colorBackground: #efedea;
+  --colorDarkBackground: #716c5d;
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
-  --gradientColor1: #79a0db;
-  --gradientColor2: #0f97db;
-  --gradientColor3: #558579;
 }
-
-/* 
-.dark {
-  --colorBackground: black;
-  --colorForeground: lightgray;
-  --colorLink: cornflowerblue;
-  --colorCode: lightpink;
-  --gradientColor1: #1a7b9e;
-  --gradientColor2: #549788;
-  --gradientColor3: #a06078;
-} */
-
-/* Background gradient taken from https://codepen.io/P1N2O/pen/pyBNzX */
-/* 
-body {
-  font-family: Helvetica, sans-serif;
-  background: linear-gradient(
-    -45deg,
-    var(--gradientColor1),
-    var(--gradientColor2),
-    var(--gradientColor3)
-  );
-  background-size: 400% 400%;
-  color: var(--colorForeground);
-  transition: color 0.4s ease-in-out, background 0.4s ease-in-out;
-  animation: gradient 100s ease infinite;
-  height: 100vh;
-}
-
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-a {
-  color: var(--colorLink);
-}
-
-code {
-  color: var(--colorCode);
-} */
-
-/* Color Mode toggle from https://henryegloff.com/how-to-code-a-simple-dark-mode-toggle/ */
-/* Light Mode Button
-		--------------------------- */
 
 .light-mode-button {
   background: 0;
@@ -108,17 +54,13 @@ code {
 		--------------------------- */
 
 body {
-  background-color: linear-gradient(
-    -45deg,
-    var(--gradientColor1),
-    var(--gradientColor2),
-    var(--gradientColor3)
-  );
+  background-color: var(--colorBackground);
   transition: background-color 0.3s;
+  height: 100vh;
 }
 
 body[light-mode="dark"] {
-  background-color: #141516;
+  background-color: var(--colorDarkBackground);
   color: #ced4e2;
 }
 
