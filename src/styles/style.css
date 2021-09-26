@@ -1,0 +1,133 @@
+:root {
+  --colorBackground: white;
+  --colorForeground: darkslategray;
+  --colorLink: royalblue;
+  --colorCode: crimson;
+  --gradientColor1: #79a0db;
+  --gradientColor2: #0f97db;
+  --gradientColor3: #558579;
+}
+
+/* 
+.dark {
+  --colorBackground: black;
+  --colorForeground: lightgray;
+  --colorLink: cornflowerblue;
+  --colorCode: lightpink;
+  --gradientColor1: #1a7b9e;
+  --gradientColor2: #549788;
+  --gradientColor3: #a06078;
+} */
+
+/* Background gradient taken from https://codepen.io/P1N2O/pen/pyBNzX */
+/* 
+body {
+  font-family: Helvetica, sans-serif;
+  background: linear-gradient(
+    -45deg,
+    var(--gradientColor1),
+    var(--gradientColor2),
+    var(--gradientColor3)
+  );
+  background-size: 400% 400%;
+  color: var(--colorForeground);
+  transition: color 0.4s ease-in-out, background 0.4s ease-in-out;
+  animation: gradient 100s ease infinite;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+a {
+  color: var(--colorLink);
+}
+
+code {
+  color: var(--colorCode);
+} */
+
+/* Color Mode toggle from https://henryegloff.com/how-to-code-a-simple-dark-mode-toggle/ */
+/* Light Mode Button
+		--------------------------- */
+
+.light-mode-button {
+  background: 0;
+  border: 0;
+  box-sizing: border-box;
+  cursor: pointer;
+  width: 30px;
+  height: 16px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0);
+
+  /* Fixed position for this demo */
+  position: fixed;
+  top: 16px;
+  right: 16px;
+}
+
+.light-mode-button:focus {
+  outline: none; /* Not ideal for accessibility */
+}
+
+.light-mode-button span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 16px;
+  background-color: #8e9096;
+  border-radius: 9px;
+  box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
+  transition: 0.3s;
+}
+
+.light-mode-button span:nth-child(2) {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
+  transition: 0.3s;
+}
+
+/* Light & Dark Mode Styles
+		--------------------------- */
+
+body {
+  background-color: linear-gradient(
+    -45deg,
+    var(--gradientColor1),
+    var(--gradientColor2),
+    var(--gradientColor3)
+  );
+  transition: background-color 0.3s;
+}
+
+body[light-mode="dark"] {
+  background-color: #141516;
+  color: #ced4e2;
+}
+
+body[light-mode="dark"] .light-mode-button span:nth-child(1) {
+  background-color: #ced4e2;
+  color: #141516;
+}
+
+body[light-mode="dark"] .light-mode-button span:nth-child(2) {
+  left: 17px;
+  background-color: #141516;
+}
