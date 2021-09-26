@@ -1,34 +1,35 @@
-import "./styles/reset.css";
-import "./styles/style.css";
+// import "./styles/reset.css";
+// import "./styles/style.css";
 
-var app = document.getElementsByTagName("BODY")[0];
+// import { addColorMode } from "./scripts/colorMode";
+
+// addColorMode();
+
+const bodyElement = document.querySelector("body");
+
 if (localStorage.lightMode == "dark") {
-  app.setAttribute("light-mode", "dark");
+  bodyElement.setAttribute("light-mode", "dark");
+  showIcon();
+}
+
+function showIcon() {
+  const colorIcons = document.querySelectorAll(".darkModeIcon");
+  colorIcons.forEach((icon) => icon.classList.toggle("active"));
 }
 
 function toggle_light_mode() {
-  var app = document.getElementsByTagName("BODY")[0];
+  var bodyElement = document.querySelector("body");
   if (localStorage.lightMode == "dark") {
     localStorage.lightMode = "light";
-    app.setAttribute("light-mode", "light");
+    bodyElement.setAttribute("light-mode", "light");
   } else {
     localStorage.lightMode = "dark";
-    app.setAttribute("light-mode", "dark");
+    bodyElement.setAttribute("light-mode", "dark");
   }
+
+  showIcon();
 }
 
 document
   .getElementById("toggleColorMode")
   .addEventListener("click", () => toggle_light_mode());
-
-window.addEventListener(
-  "storage",
-  function () {
-    if (localStorage.lightMode == "dark") {
-      app.setAttribute("light-mode", "dark");
-    } else {
-      app.setAttribute("light-mode", "light");
-    }
-  },
-  false
-);

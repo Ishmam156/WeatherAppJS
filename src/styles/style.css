@@ -1,6 +1,6 @@
 :root {
   --colorBackground: #efedea;
-  --colorDarkBackground: #716c5d;
+  --colorDarkBackground: #423f37;
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
@@ -13,7 +13,6 @@
   cursor: pointer;
   width: 30px;
   height: 16px;
-  position: relative;
   border: 1px solid rgba(255, 255, 255, 0);
 
   /* Fixed position for this demo */
@@ -72,4 +71,16 @@ body[light-mode="dark"] .light-mode-button span:nth-child(1) {
 body[light-mode="dark"] .light-mode-button span:nth-child(2) {
   left: 17px;
   background-color: #141516;
+}
+
+.darkModeIcon {
+  position: fixed;
+  top: 15px;
+  right: 49px;
+  height: 20px;
+  display: none;
+}
+
+.active {
+  display: block;
 }
