@@ -25,6 +25,8 @@
 
 <h3>Video of features</h3>
 
+https://user-images.githubusercontent.com/64395142/134812846-7a9f2ed6-b836-4df8-8764-3596b400288a.mov
+
 <h3>Demo</h3>
 
 ![Website Desktop Image](https://i.imgur.com/dahzhvd.png)
