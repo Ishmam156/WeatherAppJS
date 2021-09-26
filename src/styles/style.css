@@ -1,3 +1,5 @@
+/* Setting up variables for project */
+
 :root {
   --colorBackground: #efedea;
   --colorDarkBackground: #423f37;
@@ -7,53 +9,10 @@
   --widgetAccent: #d4ac45;
   --widgetDarkAccent: #fbbf24;
   --widgetBackground: #423f37;
-  --widgetDarkBackground: #efedea;
+  --widgetDarkBackground: white;
 }
 
-.light-mode-button {
-  background: 0;
-  border: 0;
-  cursor: pointer;
-  width: 30px;
-  height: 16px;
-  border: 1px solid rgba(255, 255, 255, 0);
-
-  /* Fixed position for this demo */
-  position: fixed;
-  top: 16px;
-  right: 16px;
-}
-
-.light-mode-button:focus {
-  outline: none; /* Not ideal for accessibility */
-}
-
-.light-mode-button span:nth-child(1) {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px;
-  height: 16px;
-  background-color: #8e9096;
-  border-radius: 9px;
-  box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
-  transition: 0.3s;
-}
-
-.light-mode-button span:nth-child(2) {
-  position: absolute;
-  top: 3px;
-  left: 3px;
-  width: 10px;
-  height: 10px;
-  background-color: #fff;
-  border-radius: 50%;
-  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
-  transition: 0.3s;
-}
-
-/* Light & Dark Mode Styles
-		--------------------------- */
+/* Main structure of app */
 
 body {
   background-color: var(--colorBackground);
@@ -66,18 +25,71 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
+#mainContainer {
+  margin: 0rem 1rem;
+}
+
+#mainContainer #error {
+  display: none;
+  color: red;
+}
+
+/* Color Mode Toggle Button */
+
+.light-mode-button {
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  width: 30px;
+  height: 16px;
+  border: 1px solid rgba(255, 255, 255, 0);
+  position: fixed;
+  top: 16px;
+  right: 16px;
+}
+
+.light-mode-button:focus {
+  outline: none;
+}
+
+.light-mode-button span:nth-child(1) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 16px;
+  background-color: var(--widgetBackground);
+  border-radius: 9px;
+  box-shadow: inset 1px 1px 3px 0 rgb(0 0 0 / 40%);
+  transition: 0.3s;
+}
+
+.light-mode-button span:nth-child(2) {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--widgetDarkAccent);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px 0 rgb(0 0 0 / 40%);
+  transition: 0.3s;
+}
+
 body[light-mode="dark"] {
   background-color: var(--colorDarkBackground);
 }
 
 body[light-mode="dark"] .light-mode-button span:nth-child(1) {
-  background-color: #ced4e2;
+  background-color: var(--colorBackground);
 }
 
 body[light-mode="dark"] .light-mode-button span:nth-child(2) {
   left: 17px;
-  background-color: #141516;
+  background-color: var(--widgetDarkAccent) !important;
 }
+
+/* Color Mode Icons */
 
 .darkModeIcon {
   position: fixed;
@@ -91,6 +103,32 @@ body[light-mode="dark"] .light-mode-button span:nth-child(2) {
   display: block;
 }
 
+/* Header and paragraph for entire app */
+
+#mainContainer h1 {
+  color: var(--colorDarkBackground);
+  text-align: center;
+  font-size: x-large;
+  font-weight: 600;
+}
+
+body[light-mode="dark"] #mainContainer h1,
+body[light-mode="dark"] #mainContainer p {
+  color: var(--widgetDarkBackground);
+}
+
+#mainContainer p {
+  color: var(--colorDarkBackground);
+  margin: 1.5rem 1rem;
+  text-align: center;
+  font-style: italic;
+  font-size: small;
+  word-wrap: break-word;
+  max-width: 390px;
+}
+
+/* Header of Weather Widget */
+
 #locationHeader {
   height: 2rem;
   padding: 0.5rem;
@@ -103,8 +141,10 @@ body[light-mode="dark"] .light-mode-button span:nth-child(2) {
 
 body[light-mode="dark"] #locationHeader {
   color: black;
-  background-color: var(--widgetDarkAccent);
+  background-color: var(--widgetAccent);
 }
+
+/* Main display of Weather Widget */
 
 #weatherDisplay {
   height: 10rem;
@@ -118,6 +158,40 @@ body[light-mode="dark"] #weatherDisplay {
   color: var(--colorDarkBackground);
   background-color: var(--widgetDarkBackground);
 }
+
+/* Temperature value display text in weather widget */
+
+#tempDisplay {
+  display: flex;
+  gap: 1rem;
+  font-size: xx-large;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+#tempSign {
+  border-bottom: 5px solid var(--widgetAccent);
+}
+
+body[light-mode="dark"] #tempSign {
+  border-bottom: 5px solid var(--widgetDarkAccent);
+}
+
+/* Temperature description display text in weather widget */
+
+#tempText {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  font-size: small;
+  font-weight: 500;
+}
+
+/* Additional temperature details display text in weather widget */
 
 #additionalDisplay {
   height: 2rem;
@@ -138,60 +212,6 @@ body[light-mode="dark"] #additionalDisplay {
   background-color: var(--widgetDarkAccent);
 }
 
-#mainContainer h1 {
-  color: var(--colorDarkBackground);
-  text-align: center;
-  font-size: x-large;
-  font-weight: 600;
-}
-
-body[light-mode="dark"] #mainContainer h1,
-body[light-mode="dark"] #mainContainer p {
-  color: var(--widgetDarkBackground);
-}
-
-#mainContainer {
-  margin: 0rem 1rem;
-}
-
-#mainContainer p {
-  color: var(--colorDarkBackground);
-  margin: 1.5rem 1rem;
-  text-align: center;
-  font-style: italic;
-  font-size: small;
-  word-wrap: break-word;
-  max-width: 390px;
-}
-
-#tempSign {
-  border-bottom: 5px solid var(--widgetAccent);
-}
-
-body[light-mode="dark"] #tempSign {
-  border-bottom: 5px solid var(--widgetDarkAccent);
-}
-
-#tempDisplay {
-  display: flex;
-  gap: 1rem;
-  font-size: xx-large;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1rem;
-}
-
-#tempText {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 1.5rem;
-  font-size: small;
-  font-weight: 500;
-}
-
 #additionalDisplay img {
   height: 12px;
   opacity: 0.6;
@@ -207,6 +227,8 @@ body[light-mode="dark"] #additionalDisplay img {
   justify-content: center;
   align-items: center;
 }
+
+/* Location search in weather widget */
 
 #weatherLocation form {
   display: inline;
@@ -237,9 +259,4 @@ body[light-mode="dark"] #additionalDisplay img {
   background-color: #503c0b;
   color: var(--colorBackground);
   cursor: pointer;
-}
-
-#mainContainer #error {
-  display: none;
-  color: red;
 }

@@ -7,6 +7,13 @@ import humidityImage from "../images/humidity.svg";
 const addColorMode = () => {
   const bodyElement = document.querySelector("body");
 
+  // To toggle dark and light icon depending on color mode status
+  const showIcon = () => {
+    const colorIcons = document.querySelectorAll(".darkModeIcon");
+    colorIcons.forEach((icon) => icon.classList.toggle("active"));
+  };
+
+  // Adding svg icons to DOM with initial light mode on
   const images = [
     {
       image: sunImage,
@@ -31,6 +38,7 @@ const addColorMode = () => {
     bodyElement.prepend(imageToAdd);
   });
 
+  // Adding additional weather element images
   const weatherImages = [
     {
       id: "windValue",
@@ -53,19 +61,16 @@ const addColorMode = () => {
     document.getElementById(image.id).parentElement.prepend(imageToAdd);
   });
 
+  // Check during initial page load whether user had previously set dark mode
   if (localStorage.lightMode == "dark") {
     bodyElement.setAttribute("light-mode", "dark");
     showIcon();
   }
 
-  function showIcon() {
-    const colorIcons = document.querySelectorAll(".darkModeIcon");
-    colorIcons.forEach((icon) => icon.classList.toggle("active"));
-  }
-
-  function toggle_light_mode() {
-    var bodyElement = document.querySelector("body");
-    if (localStorage.lightMode == "dark") {
+  // Check local storage for color mode status and switch status
+  const toggle_light_mode = () => {
+    var bodyElement = document.getElementsByTagName("BODY")[0];
+    if (localStorage.lightMode === "dark") {
       localStorage.lightMode = "light";
       bodyElement.setAttribute("light-mode", "light");
     } else {
@@ -74,7 +79,7 @@ const addColorMode = () => {
     }
 
     showIcon();
-  }
+  };
 
   document
     .getElementById("toggleColorMode")
