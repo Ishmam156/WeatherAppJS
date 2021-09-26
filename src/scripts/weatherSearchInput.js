@@ -1,4 +1,4 @@
-import { getWeatherDataOfLocation } from "./getDataAPI";
+import { getWeatherDataOfLocation } from "./getWeatherData";
 import { capitalize, showErrorMessage } from "./helper";
 import { displayWeatherToDOM } from "./addWeatherToDOM";
 
@@ -40,7 +40,6 @@ const locationInput = (element) => {
       const weatherData = await getWeatherDataOfLocation(searchValue);
 
       if (weatherData) {
-        console.log("test");
         displayWeatherToDOM(weatherData);
       } else {
         showErrorMessage(
@@ -59,8 +58,24 @@ const locationInput = (element) => {
   }
 };
 
-// Listener added to location text
+const degreeChange = async (element) => {
+  const currentDegree = element.textContent[1];
+  const locationToSearch =
+    document.getElementById("weatherLocation").textContent;
+  console.log(locationToSearch);
+  const weatherData = await getWeatherDataOfLocation(
+    locationToSearch,
+    currentDegree === "C" ? "imperial" : "metric"
+  );
+  displayWeatherToDOM(weatherData, currentDegree);
+};
+
+// Listener added to location and degree text
 const addLocationSearchListener = () => {
+  document
+    .getElementById("tempSign")
+    .addEventListener("click", (event) => degreeChange(event.target));
+
   document
     .getElementById("weatherLocation")
     .addEventListener("click", (event) => locationInput(event.target));

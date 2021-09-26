@@ -178,6 +178,7 @@ body[light-mode="dark"] #weatherDisplay {
 
 #tempSign {
   border-bottom: 3px solid var(--widgetAccent);
+  cursor: pointer;
 }
 
 body[light-mode="dark"] #tempSign {
@@ -195,6 +196,11 @@ body[light-mode="dark"] #tempSign {
   margin-top: 1.5rem;
   font-size: small;
   font-weight: 500;
+}
+
+#checkSpan {
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* Additional temperature details display text in weather widget */
@@ -277,4 +283,5 @@ a {
 
 a:hover {
   text-decoration: underline;
+  cursor: pointer;
 }
