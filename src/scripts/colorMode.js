@@ -1,5 +1,8 @@
 import sunImage from "../images/sun.svg";
 import moonImage from "../images/moon.svg";
+import windImage from "../images/wind.svg";
+import pressureImage from "../images/pressure.svg";
+import humidityImage from "../images/humidity.svg";
 
 const addColorMode = () => {
   const bodyElement = document.querySelector("body");
@@ -26,6 +29,28 @@ const addColorMode = () => {
     }
 
     bodyElement.prepend(imageToAdd);
+  });
+
+  const weatherImages = [
+    {
+      id: "windValue",
+      image: windImage,
+    },
+    {
+      id: "pressureValue",
+      image: pressureImage,
+    },
+    {
+      id: "humidityValue",
+      image: humidityImage,
+    },
+  ];
+
+  weatherImages.forEach((image) => {
+    const imageToAdd = document.createElement("img");
+    imageToAdd.alt = image.id;
+    imageToAdd.src = image.image;
+    document.getElementById(image.id).parentElement.prepend(imageToAdd);
   });
 
   if (localStorage.lightMode == "dark") {
