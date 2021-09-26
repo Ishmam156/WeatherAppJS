@@ -29,7 +29,8 @@ ul {
   list-style: none;
 }
 
-a {
+a,
+a:-webkit-any-link {
   all: unset;
 }
 

@@ -10,7 +10,7 @@ const getWeatherDataOfLocation = async (location, unit = "metric") => {
   let weatherData;
   try {
     const response = await axios.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.WEATHER_API}&units=${unit}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${location}&APPID=${process.env.WEATHER_API}&units=${unit}`
     );
     weatherData = response.data;
   } catch (err) {
