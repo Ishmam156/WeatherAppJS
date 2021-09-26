@@ -29,6 +29,10 @@ ul {
   list-style: none;
 }
 
+a {
+  all: unset;
+}
+
 /* img {
   max-width: 100%;
   height: auto;

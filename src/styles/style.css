@@ -1,15 +1,16 @@
 /* Setting up variables for project */
 
 :root {
-  --colorBackground: #efedea;
+  --colorBackground: #fdfdfd;
   --colorDarkBackground: #423f37;
   --colorForeground: darkslategray;
   --colorLink: royalblue;
   --colorCode: crimson;
-  --widgetAccent: #e4bd5c;
+  --widgetAccent: #facb55;
   --widgetDarkAccent: #fbbf24;
-  --widgetBackground: #423f37;
-  --widgetDarkBackground: white;
+  --widgetBackground: #979797;
+  --widgetDarkBackground: rgb(250, 249, 249);
+  --lightModeTextColor: black;
 }
 
 /* Main structure of app */
@@ -32,6 +33,10 @@ body {
 #mainContainer #error {
   display: none;
   color: red;
+}
+
+#mainApp {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 /* Color Mode Toggle Button */
@@ -136,7 +141,7 @@ body[light-mode="dark"] #mainContainer p {
   font-weight: bold;
   background-color: var(--widgetAccent);
   transition: background-color 0.3s;
-  color: var(--widgetBackground);
+  color: var(--lightModeTextColor);
 }
 
 body[light-mode="dark"] #locationHeader {
@@ -149,14 +154,15 @@ body[light-mode="dark"] #locationHeader {
 #weatherDisplay {
   height: 10rem;
   padding: 0.5rem;
-  color: var(--widgetDarkBackground);
+  /* color: var(--widgetDarkBackground); */
+  color: white;
   background-color: var(--widgetBackground);
   transition: background-color 0.3s;
 }
 
 body[light-mode="dark"] #weatherDisplay {
   color: var(--colorDarkBackground);
-  background-color: var(--widgetDarkBackground);
+  background-color: white;
 }
 
 /* Temperature value display text in weather widget */
@@ -204,7 +210,7 @@ body[light-mode="dark"] #tempSign {
   font-size: small;
   background-color: var(--widgetAccent);
   transition: background-color 0.3s;
-  color: var(--widgetBackground);
+  color: var(--lightModeTextColor);
 }
 
 body[light-mode="dark"] #additionalDisplay {
@@ -214,7 +220,7 @@ body[light-mode="dark"] #additionalDisplay {
 
 #additionalDisplay img {
   height: 12px;
-  opacity: 0.6;
+  opacity: 0.7;
   margin-right: 0.25rem;
 }
 
@@ -259,4 +265,16 @@ body[light-mode="dark"] #additionalDisplay img {
   background-color: #503c0b;
   color: var(--colorBackground);
   cursor: pointer;
+}
+
+/* Footer link style */
+
+a {
+  cursor: pointer;
+  font-weight: 700;
+  font-style: italic;
+}
+
+a:hover {
+  text-decoration: underline;
 }
