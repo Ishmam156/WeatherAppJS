@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const Dotenv = require("dotenv-webpack");
 const path = require("path");
 
 module.exports = {
@@ -15,6 +16,7 @@ module.exports = {
       favicon: "./src/images/favicon.ico",
     }),
     new MiniCssExtractPlugin(),
+    new Dotenv(),
   ],
   output: {
     filename: "main.js",

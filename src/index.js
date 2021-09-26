@@ -1,16 +1,5 @@
-// import "./styles/reset.css";
-// import "./styles/style.css";
-
-// import { getWeatherDataOfLocation } from "./scripts/getData";
-// import { addFormListener, addWeatherVisualsToDOM } from "./scripts/DOM";
-
-// addFormListener();
-
-// document
-//   .querySelector("#darkmode")
-//   .addEventListener("change", function (event) {
-//     document.querySelector("body").classList.toggle("dark");
-//   });
+import "./styles/reset.css";
+import "./styles/style.css";
 
 var app = document.getElementsByTagName("BODY")[0];
 if (localStorage.lightMode == "dark") {
