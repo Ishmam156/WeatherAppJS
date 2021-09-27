@@ -19,25 +19,18 @@
   <li>Provides a simple color mode toggle</li>
   <li>Prompts user for providing their current location</li>
   <li>Fetches weather data if location provided and displays on DOM</li>
+  <li>Spinning loader overlay to help show API is processing</li>
   <li>User can search for any location</li>
   <li>Clicking on the degree text allows a metric change to take place</li>
 </ul>
 
 <h3>Video of features</h3>
 
-https://user-images.githubusercontent.com/64395142/134812846-7a9f2ed6-b836-4df8-8764-3596b400288a.mov
 
 <h3>Demo</h3>
 
 ![Website Desktop Image](https://i.imgur.com/dahzhvd.png)
 ![Website Desktop Image 2](https://i.imgur.com/xWqUEPb.png)
-
-<h3> Todo </h3>
-
-<ul>
-  <li>Add a loading spinner during API calls for better UX</li>
-</ul>
-
 
 <h3>Acknowledgements</h3>
 

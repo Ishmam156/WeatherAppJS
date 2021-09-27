@@ -5,6 +5,16 @@ import {
 import { capitalize, showErrorMessage } from "./helper";
 import { displayWeatherToDOM } from "./addWeatherToDOM";
 
+const showSpinningLoader = () => {
+  document.getElementById("loadingSpinner").classList.toggle("loading");
+};
+
+const removeSpinningLoader = () => {
+  setTimeout(() => {
+    document.getElementById("loadingSpinner").classList.toggle("loading");
+  }, 1000);
+};
+
 const locationInput = (element) => {
   // Check if target element is the inital HTML span element
   if (element.nodeName === "SPAN") {
@@ -40,7 +50,11 @@ const locationInput = (element) => {
         return;
       }
 
+      showSpinningLoader();
+
       const weatherData = await getWeatherDataOfLocation(searchValue);
+
+      removeSpinningLoader();
 
       if (weatherData) {
         displayWeatherToDOM(weatherData);
@@ -85,7 +99,10 @@ const addLocationSearchListener = () => {
 
 // If user provides lat and long from browser, display weather data on DOM
 const geoLocationInput = async (lat, long) => {
+  showSpinningLoader();
   const weatherData = await getWeatherOfCoordinates(lat, long);
+  removeSpinningLoader();
+
   displayWeatherToDOM(weatherData);
   // Display location name from API call
   const nameElement = document.getElementById("weatherLocation");
