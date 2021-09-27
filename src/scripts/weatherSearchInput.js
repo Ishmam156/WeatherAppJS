@@ -79,10 +79,12 @@ const degreeChange = async (element) => {
   const currentDegree = element.textContent[1];
   const locationToSearch =
     document.getElementById("weatherLocation").textContent;
+  showSpinningLoader();
   const weatherData = await getWeatherDataOfLocation(
     locationToSearch,
     currentDegree === "C" ? "imperial" : "metric"
   );
+  removeSpinningLoader();
   displayWeatherToDOM(weatherData, currentDegree);
 };
 
